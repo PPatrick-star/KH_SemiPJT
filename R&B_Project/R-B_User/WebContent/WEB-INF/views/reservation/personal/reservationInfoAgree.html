@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개인예약 개인정보 동의</title>
+<link rel="shortcut icon" type="image/x-icon" href="/images/R&B%20CI.png">
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(
+         
+      // 시멘틱 구조 불러오기
+      function() {
+
+         // header.html 삽입 script
+         $("#headers").load("/common/htmlTag/header.jsp");
+
+         // nav.html 삽입 script
+         $("#navs").load("/common/htmlTag/nav.jsp");
+
+         // footer.html 삽입 script
+         $("#footers").load("/common/htmlTag/footer.html");
+
+      });
+</script>
+
+<script>
+	$("#next_btn").on("click", function(){
+		var radios = $(":radio[value='Y']");
+		for(var i = 0; i < radios.length; i++){
+			var $this = $(radios[i]);
+			if(!$this.is(":checked")){
+				alert('동의하지 않으면 문진을 시작할 수 없습니다.');
+				$this.focus();
+				return;
+			}
+		}
+	});
+</script>
+
+<style type="text/css">
+
+	/* 시멘틱 구조영역 스타일 */
+#wrapping1 {
+	width: auto;
+	height: 1410px;
+	margin: 0 auto;
+	background-image: linear-gradient(to top, #e3eeff 0%, #e3eeff 20%, #f3e7e9 100%);
+}
+
+#wrapping2 {
+	width: 1550px;
+	height: 1410px;
+	margin: 0 auto;
+	background-color: white;
+}
+
+header {
+	position: static;
+	width: 1500px;
+	margin: 0 auto;
+}
+
+nav {
+	position: relative;
+	width: 1500px;
+	z-index: 3;
+	margin: 0 auto;
+}
+
+section {
+	width: 1500px;
+	height: 1050px;
+	padding-top: 20px;
+	margin: 0 auto;
+	z-index: 1;
+	display: block;
+}
+
+#section_left {
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 1050px;
+	border-right: 1px solid black;
+	box-sizing: border-box;
+	float: left;
+}
+
+/* 왼쪽 네브바 css */
+#left_mainNav{
+	position: relative;
+	background-color: #f3e7e9;
+	display: block;
+	width: 275px;
+	height: 80px;
+	margin-top: 0;
+}
+
+.left_subNav{
+	position: relative;
+	border-bottom: 2.7px solid #cfe2ff;
+	display: block;
+	width: 275px;
+	height: 70px;
+	
+}
+
+.subA:hover{
+	background-color: #e3eeff;
+}
+.subA{
+	text-decoration: none;
+	color: black;
+	font-size: 17px;
+	font-weight: bold;
+	display: block;
+	padding: 25px;
+}
+
+#section_right {
+	position: absolute;
+	display: block;
+	width: 1200px;
+	height: 1050px;
+	margin-left: 300px;
+}
+	
+	/*----------------------------------------------*/
+	/*section-right꾸미기*/
+	section>#section_right>#right_whole {
+		width: 1140px;
+		height: 950px;
+		margin-left: 30px;
+		margin-top: 10px;
+		float: left;
+	}
+
+	section>#section_right>#right_whole>#right_middle {
+		width: 1140px;
+		height: 950px;
+	}
+	
+	.middle_text {
+		width: 1140px;
+		height: 285px;
+		float: left;
+	}
+	
+	.middle_agree {
+		width: 370px;
+		height: 57px;
+		padding-top: 6px;
+		font-size: 15pt;
+		float: right;
+	}
+	
+	#submit_btn {
+		width : 80px;
+		height : 40px;
+		float : right;
+		padding : 5px;
+		border : 2px solid #ccc;
+		-webkit-border-radius : 5px;
+		border-radius : 5px;
+	}
+</style>
+</head>
+<body>
+	<div id="wrapping1">
+		<div id="wrapping2">
+			<header id="headers"></header>
+			<br>
+			<nav id="navs"></nav>
+			<br>
+
+			<section>
+				<div id="section_left">
+					<div id="left_mainNav"><h1 style="margin-left:20px; position: absolute;">헌혈참여</h1></div>
+					<div class="left_subNav"><a href="/reservation/info/agree" class="subA">개인예약</a></div>
+					<div class="left_subNav"><a href="/group/info/agree" class="subA">단체예약</a></div>
+					<div class="left_subNav"><a href="/paper/info/agree" class="subA">전자문진</a></div>
+					<div class="left_subNav"><a href="/reservation/confirm" class="subA">예약정보 조회</a></div>
+				</div>
+				<div id="section_right">
+					<div id="right_whole">
+						<div id="right_head">
+							<h1 style="font-weight: 900;">개인정보동의</h1>
+						</div>
+						<div id="right_middle">
+								<div class="middle_text">
+								<div style="border: 1px solid black; width: 100%; height: 80%; overflow:auto;">
+									<span style="margin-left:45%; font-weight:bold;"><1. 개인 의료 정보 조회 동의></span>
+									<pre> 
+[개인정보의 수집이용 목적]
+   - 의료기록 조회, 처방약품 조회
+
+[개인정보 수집이용의 범위]
+   - 개인식별정보 : 성명, 주민등록번호
+   - 연락정보 : 주소, 전화번호, 휴대전화번호, 전자우편주소
+   - 의료사항 : 진료일자, 진료명, 진료내용
+   - 처방사항 : 처방일자, 처방명
+   - 신체사항 : 나이, 성별, 혈액형, 건강상태
+
+[개인(신용)정보의 보유·이용 기간]
+   - 개인정보조회 동의서 제출 후 만 3년 또는 회원 삭제 요청 시까지
+
+[동의거부 권리 및 불이익]
+  - 정보주체는 개인정보 수집에 동의하지 않을 권리가 있으며, 필수항목을 입력하지 않으시는 경우 헌혈예약이 불가합니다.
+</pre>
+								</div>
+								<div class="middle_agree">
+									<label> <input type="radio" name="r1" value="1" class="agree">
+										&nbsp;동의합니다.&nbsp;&nbsp;&nbsp;
+									</label> 
+									<label> <input type="radio" name="r1" value="0" class="agree">
+										&nbsp;동의하지않습니다.
+									</label>
+								</div>
+							</div>
+							<div class="middle_text">
+								<div style="border: 1px solid black; width: 100%; height: 80%; overflow:auto;">
+									<span style="margin-left:38%; font-weight:bold;"><2. 개인 정보 수집 및 이용에 대한 안내></span>
+								<pre>
+[수집 및 이용 목적]
+  - 헌혈예약 및 예약 관련 상담
+
+[수집 및 이용 항목]
+  - (필수) 이름, 주민등록번호(외국인등록번호), 휴대전화번호
+
+[이용 및 보유 기간]
+  - 헌혈예약 후 5년
+
+[동의거부 권리 및 불이익]
+  - 정보주체는 개인정보 수집에 동의하지 않을 권리가 있으며, 필수항목을 입력하지 않으시는 경우 헌혈예약이 불가합니다.
+
+								</pre>
+								</div>
+								<div class="middle_agree">
+									<label> <input type="radio" name="r2" value="1" class="agree">
+										&nbsp;동의합니다.&nbsp;&nbsp;&nbsp;
+									</label>
+									<label> <input type="radio" name="r2" value="0" class="agree">
+										&nbsp;동의하지않습니다.
+									</label>
+								</div>
+							</div>
+							<div class="middle_text">
+								<div style="border: 1px solid black; width: 100%; height: 80%; overflow-y:auto;">
+									<span style="margin-left:20%; font-weight:bold;"><3. 「혈액관리법」제4조의2제4항에 따라 헌혈에 관한 유의사항을 설명 받았으며 다음 사항에 동의합니다.></span>
+								<pre>
+  - 나는 생명을 살리고자 하는 고귀한 뜻에 동참하여 자발적으로 헌혈하는데 동의합니다.
+  - 나는 문진사항과 헌혈관련증상에 대해 읽고 충분히 이해하였으며, 모든 질문에 정직하게 답하였습니다.
+  - 나는 수혈받는 환자를 보호하기 위하여 필요한 검사를 시행하고, 그 결과를 포함하여 과거의 헌혈 경력, 
+  	검사 결과 및 세부사항(헌혈부적격 관련 정보 등)을 관리, 전산 조회하는 것에 동의합니다.
+  - 만약 나의 혈액이 수혈에 부적합한 것으로 판정되면, 채혈금지대상자로 등록될 수 있음에 동의하며 이로 인한 어떠한 불이익도 없다는 점을 이해합니다.
+  - 내가 헌혈한 혈액(검체 등 포함)이 최소 10년간 보관되어야 한다는 사실에 동의하며, 아래와 같은 목적으로 사용될 수 있다는 사실에 동의합니다.
+  - 의학적 연구, 의약품·의료기기 개발, 혈액관리에 필요한 품질관리 및 시약평가, 수혈부작용 원인규명, 헌혈경력이 있는 군 장병 유해 신원확인, 
+  	6.25 전사자 신원확인 및 유가족 찾기를 위한 DNA 시료 채취
+
+								</pre>
+								</div>
+								<div class="middle_agree">
+									<label> <input type="radio" name="r3" value="1" class="agree">
+										&nbsp;동의합니다.&nbsp;&nbsp;&nbsp;
+									</label>
+									<label> <input type="radio" name="r3" value="0" class="agree">
+										&nbsp;동의하지않습니다.
+									</label>
+								</div>
+							</div>
+							
+							<form onsubmit="return f()" name="infoagree" action="/basic/info">
+								<div id="middle_btn">
+									<input type="hidden" name="onLine" value="Y">
+									<input type="hidden" name="reservation" value="Y">
+									<input type="submit" value="next >" id="submit_btn">
+									 
+								</div>
+							</form>
+							
+							<!-- <input type="button" onclick="return f()" value="NEXT >"> -->
+							
+						</div>
+
+					</div>
+				</div>
+
+			</section>
+			<br> <br>
+
+			<footer id="footers"></footer>
+		</div>
+	</div>
+	
+	<script>
+	//라디오 버튼 검사 
+		function f(){
+		var radio_name = new Array;
+		$(".agree").each(function(index){
+		
+		    radio_name.push($(this).attr('name'));
+		});
+		
+		radio_name = unique(radio_name)
+		
+		for(var i=0;i<radio_name.length;i++){
+		
+		 
+		 if( $('input[name='+radio_name[i]+']:checked').val() != '1'){
+		        alert('동의하지 않으면 문진을 할 수 없습니다..');
+		        $('input[name='+radio_name[i]+']:eq(0)').focus();
+		        
+		        return false;
+		        
+		 }
+		}
+		
+		return true;
+		
+		}
+		
+		
+		function unique(list) {
+		var result = [];
+		$.each(list, function(i, e) {
+		if ($.inArray(e, result) == -1) result.push(e);
+		});
+		return result;
+		}
+	
+	
+	
+	/*
+        $(document).ready(function(){
+            /* $("form[name=infoagree]").submit(function(){
+                return f();
+            });
+        });
+        
+        function f(){
+            var radio_name = new Array;
+            $(".agree").each(function(index){
+                radio_name.push($(this).attr('name'));
+            });
+            radio_name = unique(radio_name)
+            for(var i=0; i<radio_name.length; i++){
+                if($('input[name='+radio_name[i]+']:checked').val() != '1'){
+                   alert('동의하지 않으면 문진을 할 수 없습니다..');
+                    $('input[name='+radio_name[i]+']:eq(0)').focus();
+                    return false;
+                
+                   }
+            }
+            location.href="/basic/info";
+        }
+        
+        function unique(list){
+            var result = [];
+            $.each(list, function(i, e){
+                if($.inArray(e, result) == -1)result.push(e);
+            });
+            return result;
+        }
+        
+        */
+    </script>
+</body>
+</html>
